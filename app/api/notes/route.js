@@ -1,13 +1,9 @@
 import { NextResponse } from 'next/server';
-
-// In-memory storage for notes
-let notes = [];
-
-import { Storage, STORAGE_KEYS } from '../../../public/js/storage';
+import serverStorage, { STORAGE_KEYS } from '../../utils/serverStorage';
 
 export async function GET() {
   try {
-    const notes = Storage.getData(STORAGE_KEYS.NOTES);
+    const notes = serverStorage.getData(STORAGE_KEYS.NOTES);
     return NextResponse.json(notes);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch notes' }, { status: 500 });
@@ -26,11 +22,11 @@ export async function POST(request) {
     };
     
     // Get existing notes and add new one
-    const notes = Storage.getData(STORAGE_KEYS.NOTES);
+    const notes = serverStorage.getData(STORAGE_KEYS.NOTES);
     notes.push(note);
     
     // Save updated notes
-    Storage.saveData(STORAGE_KEYS.NOTES, notes);
+    serverStorage.saveData(STORAGE_KEYS.NOTES, notes);
     
     return NextResponse.json(note);
   } catch (error) {
