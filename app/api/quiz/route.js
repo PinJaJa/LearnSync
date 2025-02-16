@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import storage from '@/app/utils/storage';
 
 // In-memory storage for quizzes
 let quizzes = [];
@@ -112,12 +113,9 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-import { Storage, STORAGE_KEYS } from '@/public/js/storage';
-
-
 export async function GET() {
   try {
-    const quizzes = Storage.getData(STORAGE_KEYS.QUIZZES);
+    const quizzes = storage.get('quizzes') || [];
     return NextResponse.json(quizzes);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch quizzes' }, { status: 500 });
@@ -141,11 +139,11 @@ export async function POST(request) {
     };
 
     // Get existing quizzes and add new one
-    const quizzes = Storage.getData(STORAGE_KEYS.QUIZZES);
+    const quizzes = storage.get('quizzes') || [];
     quizzes.push(quiz);
     
     // Save updated quizzes
-    Storage.saveData(STORAGE_KEYS.QUIZZES, quizzes);
+    storage.set('quizzes', quizzes);
 
     return NextResponse.json(quiz);
   } catch (error) {
