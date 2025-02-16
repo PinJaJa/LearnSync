@@ -112,35 +112,8 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-return [
-    {
-      content: `What is the main topic of: ${content.substring(0, 50)}...?`,
-      answer: "The main topic",
-      options: ["The main topic", "A secondary topic", "An unrelated topic", "None of the above"]
-    },
-    {
-      content: "Which of the following best describes the content?",
-      answer: "A comprehensive overview",
-      options: ["A comprehensive overview", "A brief mention", "A detailed analysis", "A critique"]
-    },
-    {
-      content: "What is the key takeaway from this content?",
-      answer: "Understanding the core concepts",
-      options: ["Understanding the core concepts", "Memorizing facts", "Solving problems", "Following instructions"]
-    },
-    {
-      content: "How would you apply this knowledge?",
-      answer: "In practical situations",
-      options: ["In practical situations", "In theoretical contexts", "In academic settings", "In casual conversations"]
-    },
-    {
-      content: "What aspect of the content needs further exploration?",
-      answer: "Advanced applications",
-      options: ["Advanced applications", "Basic concepts", "Historical context", "Future implications"]
-    }
-  ];
+import { Storage, STORAGE_KEYS } from '@/public/js/storage';
 
-import { Storage, STORAGE_KEYS } from '../../../public/js/storage';
 
 export async function GET() {
   try {
