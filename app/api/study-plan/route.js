@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { Storage, STORAGE_KEYS } from '../../../public/js/storage';
+import storage from '../../utils/storage';
 
 export async function GET() {
   try {
-    const studyPlans = Storage.getData(STORAGE_KEYS.STUDY_PLANS);
+    const studyPlans = storage.get('study_plans') || [];
     return NextResponse.json(studyPlans);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch study plans' }, { status: 500 });
@@ -24,11 +24,11 @@ export async function POST(request) {
     };
     
     // Get existing study plans and add new one
-    const studyPlans = Storage.getData(STORAGE_KEYS.STUDY_PLANS);
+    const studyPlans = storage.get('study_plans') || [];
     studyPlans.push(studyPlan);
     
     // Save updated study plans
-    Storage.saveData(STORAGE_KEYS.STUDY_PLANS, studyPlans);
+    storage.set('study_plans', studyPlans);
     
     return NextResponse.json(studyPlan);
   } catch (error) {
