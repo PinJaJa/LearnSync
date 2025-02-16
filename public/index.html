@@ -15,9 +15,17 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="sr-only" role="banner">
-        <nav role="navigation" aria-label="Skip links">
-            <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header role="banner">
+        <nav role="navigation" class="main-nav">
+            <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
+            <ul class="nav-list">
+                <li><a href="#ai-tutor">AI Tutor</a></li>
+                <li><a href="#smart-notes">Smart Notes</a></li>
+                <li><a href="#quiz-generator">Quiz Generator</a></li>
+                <li><a href="#study-planner">Study Planner</a></li>
+                <li><a href="#collaboration">Collaboration</a></li>
+                <li><a href="#revision">Revision</a></li>
+            </ul>
         </nav>
     </header>
     <main id="main-content" class="main-container" role="main">
@@ -26,28 +34,28 @@
             <p class="main-description" tabindex="0">An innovative educational platform that combines AI-powered learning tools with collaborative features.</p>
             
             <div class="features-grid" role="list" aria-label="Features">
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>AI Tutor</h2>
+                <article id="ai-tutor" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/tutor">AI Tutor</a></h2>
                     <p>Interactive AI-powered tutoring system with personalized learning experience</p>
                 </article>
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>Smart Notes</h2>
+                <article id="smart-notes" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/notes">Smart Notes</a></h2>
                     <p>Efficient note organization and management system with user-friendly interface</p>
                 </article>
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>Auto Quiz Generator</h2>
+                <article id="quiz-generator" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/quiz">Auto Quiz Generator</a></h2>
                     <p>Automatically generates quizzes from study materials to reinforce learning</p>
                 </article>
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>Study Planner</h2>
+                <article id="study-planner" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/planner">Study Planner</a></h2>
                     <p>Schedule management for study sessions with progress tracking</p>
                 </article>
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>Collaboration Hub</h2>
+                <article id="collaboration" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/collaboration">Collaboration Hub</a></h2>
                     <p>Peer collaboration on study materials in an interactive environment</p>
                 </article>
-                <article class="feature-card" role="listitem" tabindex="0">
-                    <h2>AI-powered Revision</h2>
+                <article id="revision" class="feature-card" role="listitem" tabindex="0">
+                    <h2><a href="/revision">AI-powered Revision</a></h2>
                     <p>Smart feedback and AI-assisted revision system</p>
                 </article>
             </div>
