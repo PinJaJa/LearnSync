@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  notes         Note[]
+  quizzes       Quiz[]
+  studyPlans    StudyPlan[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Quiz {
+  id        String       @id @default(cuid())
+  title     String
+  questions Question[]
+  userId    String
+  user      User         @relation(fields: [userId], references: [id])
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Question {
+  id       String   @id @default(cuid())
+  content  String
+  answer   String
+  options  String[]
+  quizId   String
+  quiz     Quiz     @relation(fields: [quizId], references: [id])
+}
+
+model StudyPlan {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
