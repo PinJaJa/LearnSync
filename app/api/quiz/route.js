@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import storage from '../../utils/storage';
+import storage from '@/app/utils/storage';
 
 // In-memory storage for quizzes
 let quizzes = [];

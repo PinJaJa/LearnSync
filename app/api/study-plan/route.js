@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import storage from '../../utils/storage';
+import storage from '@/app/utils/storage';
 
 export async function GET() {
   try {
